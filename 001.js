@@ -12,7 +12,7 @@ function hidCards() {
         spans[i].classList.add('hidden');
     }
 }
-spans.addEventListener
+spans.addEventListener('click',flipcard(Event))
 
 
 

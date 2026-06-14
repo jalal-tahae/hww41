@@ -1,6 +1,9 @@
 let spans = document.querySelectorAll(".cards span");
 let flipedCards = 0;
-var clickedText=[];
+var clickedText = [];
+let card;
+let cardtext;
+let cards;
 setTimeout(() => {
   hidCards();
 }, 2000);
@@ -16,7 +19,7 @@ function flipcard(Event) {
   console.log(Event);
 }
 
-let cards = document.querySelectorAll(".cards");
+cards = document.querySelectorAll(".cards");
 debugger;
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", function (event) {
@@ -26,18 +29,27 @@ for (let i = 0; i < cards.length; i++) {
 function cardClick(event) {
   console.log(event.srcElement);
   debugger;
-  let card = event.srcElement;
+  card = event.srcElement;
   card.querySelectorAll("span")[0].classList.remove("hidden");
- let  cardtext=card.querySelectorAll("span")[0].textContent;
-  clickedText.push(cardtext)
+  cardtext = card.querySelectorAll("span")[0];
+
+  clickedText.push(cardtext);
   flipedCards++;
   if (flipedCards === 2) {
     flipedCards = 0;
-    if(cardtext[0]==cardtext[1]){
-      lockCard
+    if (clickedText[0].textContent == clickedText[1].textContent) {
+      clickedText[0].classList.add("locked");
+      clickedText[1].classList.add("locked");
+    } else {
+      setTimeout(() => {
+        hidCards();
+      }, 1000);
     }
     setTimeout(() => {
       hidCards();
     }, 1000);
   }
 }
+//.getatribute
+
+//locked
